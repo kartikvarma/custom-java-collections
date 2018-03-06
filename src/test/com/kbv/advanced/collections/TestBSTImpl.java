@@ -1,10 +1,8 @@
-package om.kbv.advanced.collections;
+package com.kbv.advanced.collections;
 
 
-import com.kbv.advanced.collections.BST;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.Random;
 
 public class TestBSTImpl {
 

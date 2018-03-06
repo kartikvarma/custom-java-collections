@@ -9,6 +9,16 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
   private final static Logger LOG = LoggerFactory.getLogger(BinarySearchTreeImpl.class);
 
+  /**
+   *  Insert - follow below rules
+   *  1.  If the root is null set the passed in argument in the root.
+   *  2. If the value is less than root then, insert into left subtree.
+   *  3. If the value is greater than root then, insert into right subtree.
+   *
+   * @param t - Generic Type
+   * @param root - {@code TreeNode}
+   * @return {@code TreeNode}
+   */
   @Override
   public TreeNode<T> insert(T t, TreeNode<T> root) {
     if (root == null) {
@@ -68,7 +78,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
     if(root != null){
 
       if(root.getRight() != null){
-        prettyPrint(root.getRight(), indent+2, out);
+        prettyPrint(root.getRight(), indent+1, out);
       }
 
       if(indent > 0){
@@ -83,7 +93,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
       if(root.getLeft() != null){
         out.print(String.format("%s\t\\\n",setTabWidth(indent)));
-        prettyPrint(root.getLeft(), indent+2, out);
+        prettyPrint(root.getLeft(), indent+1, out);
       }
     }
   }
