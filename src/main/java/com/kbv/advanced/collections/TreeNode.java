@@ -3,6 +3,23 @@ package com.kbv.advanced.collections;
 public class TreeNode<T> {
 
   private T t;
+  private TreeNode<T> left;
+  private TreeNode<T> right;
+
+  public TreeNode() {
+  }
+
+  public TreeNode(T t) {
+    this.t = t;
+    left = null;
+    right = null;
+  }
+
+  public TreeNode(T t, TreeNode<T> left, TreeNode<T> right) {
+    this.t = t;
+    this.left = left;
+    this.right = right;
+  }
 
   public T getT() {
     return t;
@@ -28,23 +45,8 @@ public class TreeNode<T> {
     this.right = right;
   }
 
-  private TreeNode<T> left;
-  private TreeNode<T> right;
-
-  public TreeNode(T t){
-    this.t = t;
-    left = null;
-    right = null;
-  }
-
-  public TreeNode(T t, TreeNode<T> left, TreeNode<T> right){
-    this.t = t;
-    this.left = left;
-    this.right = right;
-  }
-
   @Override
   public String toString() {
-    return this.t.toString()+ " ";
+    return this.t.toString() + " ";
   }
 }
