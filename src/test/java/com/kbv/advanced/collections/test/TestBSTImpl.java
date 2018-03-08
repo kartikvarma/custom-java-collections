@@ -8,6 +8,7 @@ public class TestBSTImpl {
 
   private static BST<Integer> fullBST;
   private static BST<Integer> genericBST;
+  private static BST<Integer> someBST;
 
 
   @BeforeAll
@@ -30,6 +31,20 @@ public class TestBSTImpl {
     genericBST.insert(8);
     genericBST.insert(12);
     genericBST.insert(30);
+
+    someBST = new BST<>();
+    someBST.insert(50);
+    someBST.insert(30);
+    someBST.insert(20);
+    someBST.insert(40);
+    someBST.insert(70);
+    someBST.insert(60);
+    someBST.insert(80);
+    someBST.insert(45);
+    someBST.insert(35);
+    someBST.insert(47);
+    someBST.insert(39);
+    someBST.insert(25);
 
   }
 
@@ -65,6 +80,21 @@ public class TestBSTImpl {
   public void test_find_min() {
     System.out.println("Minimum value in Full BST : "+fullBST.findMinValue()+"\n");
     System.out.println("Minimum value in Generic BST : "+genericBST.findMinValue()+"\n");
+    System.out.println("Minimum value in Some BST : "+someBST.findMinValue()+"\n");
+  }
+
+  @Test
+  public void test_print() {
+    fullBST.print();
+
+    System.out.println("\n\n\n\n");
+
+    genericBST.print();
+
+    System.out.println("\n\n\n\n");
+
+    someBST.print();
+
   }
 
   @Test
@@ -87,5 +117,12 @@ public class TestBSTImpl {
   }
 
 
+  @Test
+  public void test_delete_node_with_many_children_someBST(){
+    someBST.print();
+    System.out.println("\n\n\n\n");
+    someBST.delete(30);
+    someBST.print();
+  }
 
 }
