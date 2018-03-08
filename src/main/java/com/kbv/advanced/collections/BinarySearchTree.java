@@ -25,4 +25,6 @@ public interface BinarySearchTree<T> {
   boolean isEmpty(TreeNode<T> root);
 
   void prettyPrint(TreeNode<T> root, int indent, PrintStream stream);
+
+  TreeNode<T>  findMin(TreeNode<T> node);
 }

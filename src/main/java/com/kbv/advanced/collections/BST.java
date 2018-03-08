@@ -30,4 +30,9 @@ public class BST<T extends Comparable<T>> extends BinarySearchTreeImpl<T> {
   public void print() {
      super.prettyPrint(this.root, 0, System.out);
   }
+
+  public T findMinValue(){
+    TreeNode<T> minNode = super.findMin(root);
+    return minNode.getT();
+  }
 }
