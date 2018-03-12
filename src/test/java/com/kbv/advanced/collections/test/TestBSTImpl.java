@@ -125,4 +125,9 @@ public class TestBSTImpl {
     someBST.print();
   }
 
+  @Test
+  public void test_search_someBST(){
+    System.out.println("Value found : "+someBST.search(30));
+  }
+
 }

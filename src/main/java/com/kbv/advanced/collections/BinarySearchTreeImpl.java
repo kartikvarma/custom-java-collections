@@ -4,6 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.PrintStream;
+import java.util.ArrayDeque;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySearchTree<T> {
 
@@ -34,7 +37,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
   @Override
   public void delete(T t, TreeNode<T> root) {
-    root = deleteNode(t, root);
+    deleteNode(t, root);
   }
 
   private TreeNode<T> deleteNode(T t, TreeNode<T> root) {
@@ -49,7 +52,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
     if (root == null) {
       LOG.error("Empty Node");
-      return root;
+      return null;
     }
 
     // decision to check whether the value is in right sub tree or left sub tree.
@@ -61,12 +64,11 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
     // once decided, check below conditions
     else {
-      if(root.getRight() != null && root.getLeft() != null) {
+      if (root.getRight() != null && root.getLeft() != null) {
         T temp = findMin(root.getRight()).getT();
         root.setRight(deleteNode(temp, root.getRight()));
         root.setT(temp);
-      }
-      else {
+      } else {
         root = (root.getLeft() != null ? root.getLeft() : root.getRight());
       }
     }
@@ -89,6 +91,29 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
 
   @Override
   public boolean search(T t, TreeNode<T> root) {
+    Queue<TreeNode> queue = new ArrayDeque<>();
+    if (root != null) {
+      if (root.getT().equals(t)) {
+        return true;
+      }
+      queue.add(root);
+
+      while (!queue.isEmpty()) {
+        TreeNode temp = queue.poll();
+
+        if (temp.getT().equals(t)){
+          return true;
+        }
+
+        if (temp.getLeft() != null) {
+          queue.add(temp.getLeft());
+        }
+
+        if (temp.getRight() != null) {
+          queue.add(temp.getRight());
+        }
+      }
+    }
     return false;
   }
 
