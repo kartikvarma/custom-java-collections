@@ -4,6 +4,10 @@ import com.kbv.advanced.collections.BST;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class TestBSTImpl {
 
   private static BST<Integer> fullBST;
@@ -127,7 +131,12 @@ public class TestBSTImpl {
 
   @Test
   public void test_search_someBST(){
-    System.out.println("Value found : "+someBST.search(30));
+    someBST.print();
+    System.out.println("\nValue found : "+someBST.search(39));
+    System.out.println("\nValue found : "+someBST.search(100));
+
+    fullBST.print();
+    System.out.println("\nValue found : "+fullBST.search(39));
   }
 
 }
